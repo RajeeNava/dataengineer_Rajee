@@ -1,2 +1,7 @@
-my new git exercise
+my new git exercise 
+d2_exercise
+trying out changes on v0 of master(d2_exercise)
+now am to resolving it by working on new version of master in d2_exercise.
+"Have an wonderful day!!"
 trying to save in d1 feature branch cloned from master and doing changes.
+master
