@@ -1,1 +1,2 @@
 my new git exercise
+trying out changes on v0 of master(d2_exercise)
