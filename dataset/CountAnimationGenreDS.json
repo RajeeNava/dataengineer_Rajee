@@ -1,0 +1,27 @@
+{
+	"name": "CountAnimationGenreDS",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "targetadls",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileSystem": "curated"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "TotalNumOfComedyMovies",
+				"type": "String"
+			}
+		]
+	}
+}

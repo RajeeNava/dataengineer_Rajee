@@ -19,6 +19,20 @@
 						"type": "DatasetReference"
 					},
 					"name": "sink1"
+				},
+				{
+					"dataset": {
+						"referenceName": "CountAnimationGenreDS",
+						"type": "DatasetReference"
+					},
+					"name": "sink2"
+				},
+				{
+					"dataset": {
+						"referenceName": "MoviesbtwnDS",
+						"type": "DatasetReference"
+					},
+					"name": "sink3"
 				}
 			],
 			"transformations": [
@@ -27,6 +41,18 @@
 				},
 				{
 					"name": "aggregate1"
+				},
+				{
+					"name": "filter2"
+				},
+				{
+					"name": "aggregate2"
+				},
+				{
+					"name": "filter3"
+				},
+				{
+					"name": "aggregate3"
 				}
 			],
 			"scriptLines": [
@@ -43,6 +69,10 @@
 				"     ignoreNoFilesFound: false) ~> source1",
 				"source1 filter(genres == 'Comedy') ~> filter1",
 				"filter1 aggregate(TotalNumOfComedyMovies = count()) ~> aggregate1",
+				"source1 filter(genres == 'Animation') ~> filter2",
+				"filter2 aggregate(TotalNumOfAnimationGenre = count()) ~> aggregate2",
+				"source1 filter(year > 1990 && year < 2010) ~> filter3",
+				"filter3 aggregate(Moviesbtwn1990to2010 = count()) ~> aggregate3",
 				"aggregate1 sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     partitionFileNames:['TotalNumOfComedyGenre.csv'],",
@@ -51,7 +81,31 @@
 				"     postCommands: [],",
 				"     skipDuplicateMapInputs: true,",
 				"     skipDuplicateMapOutputs: true,",
-				"     partitionBy('hash', 1)) ~> sink1"
+				"     partitionBy('hash', 1)) ~> sink1",
+				"aggregate2 sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     input(",
+				"          TotalNumOfComedyMovies as string",
+				"     ),",
+				"     partitionFileNames:['TotalNumOfAnimationGenre.csv'],",
+				"     umask: 0022,",
+				"     preCommands: [],",
+				"     postCommands: [],",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true,",
+				"     partitionBy('hash', 1)) ~> sink2",
+				"aggregate3 sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     input(",
+				"          TotalNumOfAnimationGenre as string",
+				"     ),",
+				"     partitionFileNames:['Moviesbtwn1990to2010.csv'],",
+				"     umask: 0022,",
+				"     preCommands: [],",
+				"     postCommands: [],",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true,",
+				"     partitionBy('hash', 1)) ~> sink3"
 			]
 		}
 	}
