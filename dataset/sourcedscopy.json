@@ -2,7 +2,7 @@
 	"name": "sourcedscopy",
 	"properties": {
 		"linkedServiceName": {
-			"referenceName": "adlssource",
+			"referenceName": "sourceadls",
 			"type": "LinkedServiceReference"
 		},
 		"annotations": [],

@@ -2,7 +2,7 @@
 	"name": "targetdscopy",
 	"properties": {
 		"linkedServiceName": {
-			"referenceName": "adlstarget",
+			"referenceName": "targetadls",
 			"type": "LinkedServiceReference"
 		},
 		"annotations": [],
@@ -18,6 +18,31 @@
 			"firstRowAsHeader": true,
 			"quoteChar": "\""
 		},
-		"schema": []
+		"schema": [
+			{
+				"name": "movie",
+				"type": "String"
+			},
+			{
+				"name": "title",
+				"type": "String"
+			},
+			{
+				"name": "genres",
+				"type": "String"
+			},
+			{
+				"name": "year",
+				"type": "String"
+			},
+			{
+				"name": "Rating",
+				"type": "String"
+			},
+			{
+				"name": "Rotton Tomato",
+				"type": "String"
+			}
+		]
 	}
 }
